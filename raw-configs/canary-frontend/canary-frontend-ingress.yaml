@@ -1,0 +1,10 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: canary-frontend-ingress
+spec:
+  defaultBackend:
+    service:
+      name: canary-frontend-service
+      port:
+        number: 80

@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: canary-frontend-deployment
+  labels:
+    deployment: canary-frontend
+spec:
+  selector:
+    matchLabels:
+      app: canary-frontend
+    replicas: 1
+  template:
+    metadata:
+      labels:
+        app: canary-frontend
+    spec:
+      containers:
+        - name: canary-frontend
+          image: ekke020/canary-frontend:b3cde81
+          ports:
+            - containerPort: 80
