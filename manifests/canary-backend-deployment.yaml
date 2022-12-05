@@ -32,7 +32,7 @@ spec:
         app: canary-backend
     spec:
       containers:
-      - image: ekke020/canary-backend:c53499c
+      - image: ekke020/canary-backend:f26d9fe
         name: canary-backend
         ports:
         - containerPort: 7878
