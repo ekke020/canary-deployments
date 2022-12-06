@@ -1,4 +1,4 @@
-apiVersion: app/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: canary-frontend-deployment
@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: canary-frontend
-          image: ekke020/canary-frontend:69c86a1
+          image: ekke020/canary-frontend:cc3c146
           ports:
             - containerPort: 80
