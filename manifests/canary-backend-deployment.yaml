@@ -31,7 +31,7 @@ spec:
         app: canary-backend
     spec:
       containers:
-      - image: ekke020/canary-backend:6296339
+      - image: ekke020/canary-backend:ea7d3bd
         name: canary-backend
         ports:
         - containerPort: 7878
@@ -46,6 +46,15 @@ spec:
   analysis:
     interval: 1m
     maxWeight: 100
+    metrics:
+    - interval: 1m
+      name: request-success-rate
+      thresholdRange:
+        min: 99
+    - interval: 1m
+      name: request-duration
+      thresholdRange:
+        max: 500
     stepWeight: 10
   service:
     port: 7878
