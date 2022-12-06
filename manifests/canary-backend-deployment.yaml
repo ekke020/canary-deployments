@@ -13,39 +13,43 @@ spec:
     targetPort: 7878
   selector:
     app: canary-backend
-  type: NodePort
 ---
-apiVersion: v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
     deployment: canary-backend
   name: canary-backend-deployment
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: canary-backend
-    replicas: 2
   template:
     metadata:
       labels:
         app: canary-backend
     spec:
       containers:
-      - image: ekke020/canary-backend:f26d9fe
+      - image: ekke020/canary-backend:6296339
         name: canary-backend
         ports:
         - containerPort: 7878
           name: http
           protocol: TCP
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: flagger.app/v1beta1
+kind: Canary
 metadata:
-  name: canary-backend-ingress
+  name: canary-backend-release
 spec:
-  defaultBackend:
-    service:
-      name: canary-backend-service
-      port:
-        number: 8080
+  analysis:
+    interval: 1m
+    maxWeight: 100
+    stepWeight: 10
+  service:
+    port: 7878
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: canary-backend-deployment
