@@ -31,36 +31,9 @@ spec:
         app: canary-backend
     spec:
       containers:
-      - image: ekke020/canary-backend:a642eb4
+      - image: ekke020/canary-backend:86a6e19
         name: canary-backend
         ports:
         - containerPort: 7878
           name: http
           protocol: TCP
----
-apiVersion: flagger.app/v1beta1
-kind: Canary
-metadata:
-  name: canary-backend-release
-spec:
-  analysis:
-    interval: 30s
-    maxWeight: 100
-    metrics:
-    - interval: 1m
-      name: request-success-rate
-      thresholdRange:
-        min: 99
-    - interval: 1m
-      name: request-duration
-      thresholdRange:
-        max: 500
-    stepWeight: 10
-    threshold: 10
-  service:
-    port: 8080
-    targetPort: 7878
-  targetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: canary-backend-deployment
