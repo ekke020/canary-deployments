@@ -15,7 +15,7 @@ spec:
     app: canary-frontend
   type: NodePort
 ---
-apiVersion: app/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -32,7 +32,7 @@ spec:
         app: canary-frontend
     spec:
       containers:
-      - image: ekke020/canary-frontend:69c86a1
+      - image: ekke020/canary-frontend:cc3c146
         name: canary-frontend
         ports:
         - containerPort: 80
