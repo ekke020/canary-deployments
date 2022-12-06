@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: canary-frontend
-          image: ekke020/canary-frontend:cc3c146
+          image: ekke020/canary-frontend:e92dd12
           ports:
             - containerPort: 80
