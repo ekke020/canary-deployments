@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: canary-frontend-deployment
+  name: canary-frontend
   labels:
-    deployment: canary-frontend
+    deployment: frontend
 spec:
   selector:
     matchLabels:
@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: canary-frontend
-          image: ekke020/canary-frontend:bbb4ffe
+          image: ekke020/canary-frontend:a621bc1
           ports:
             - containerPort: 80
