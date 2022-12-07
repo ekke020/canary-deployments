@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: canary-frontend
+    app: canary
     service: frontend-srv
   name: frontend-srv
   namespace: frontend
@@ -12,7 +12,7 @@ spec:
     protocol: TCP
     targetPort: 80
   selector:
-    app: canary-frontend
+    app: canary
   type: NodePort
 ---
 apiVersion: apps/v1
@@ -20,20 +20,20 @@ kind: Deployment
 metadata:
   labels:
     deployment: frontend
-  name: canary-frontend
+  name: canary
   namespace: frontend
 spec:
   selector:
     matchLabels:
-      app: canary-frontend
+      app: canary
     replicas: 1
   template:
     metadata:
       labels:
-        app: canary-frontend
+        app: canary
     spec:
       containers:
-      - image: ekke020/canary-frontend:a621bc1
+      - image: ekke020/canary-frontend:097fcf0
         name: canary-frontend
         ports:
         - containerPort: 80
