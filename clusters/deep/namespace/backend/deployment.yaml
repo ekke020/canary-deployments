@@ -62,10 +62,6 @@ spec:
     interval: 10s
     maxWeight: 80
     metrics:
-    - interval: 1m
-      name: request-success-rate
-      thresholdRange:
-        min: 99
     - interval: 30s
       name: request-duration
       thresholdRange:
