@@ -26,13 +26,16 @@ spec:
     gateways:
     - public-gateway.istio-system.svc.cluster.local
     # Istio virtual service host names (optional)
-    # hosts:
-    # - app.example.com
+    hosts:
+    - "*"
     # Istio traffic policy (optional)
     trafficPolicy:
       tls:
         # use ISTIO_MUTUAL when mTLS is enabled
         mode: DISABLE
+    match:
+      - uri:
+          prefix: /color
     # Istio retry policy (optional)
     retries:
       attempts: 3
