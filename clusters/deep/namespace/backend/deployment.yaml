@@ -80,6 +80,11 @@ spec:
   service:
     gateways:
     - public-gateway.istio-system.svc.cluster.local
+    hosts:
+    - '*'
+    match:
+    - uri:
+        prefix: /color
     port: 8080
     retries:
       attempts: 3
