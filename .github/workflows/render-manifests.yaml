@@ -3,7 +3,7 @@ name: kustomize
 on:
   push: 
     paths:
-      - 'deployments/**'
+      - 'raw-configs/**'
   workflow_dispatch: {}
   
 jobs:
