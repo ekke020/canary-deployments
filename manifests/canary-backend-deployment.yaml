@@ -20,7 +20,7 @@ spec:
         app: canary-server
     spec:
       containers:
-      - image: ekke020/canary-backend:0960708
+      - image: ekke020/canary-backend:7dd8821
         name: canary-server
         ports:
         - containerPort: 7878
@@ -33,7 +33,7 @@ metadata:
   name: canary-hpa
   namespace: backend
 spec:
-  maxReplicas: 2
+  maxReplicas: 3
   metrics:
   - resource:
       name: cpu
@@ -41,7 +41,7 @@ spec:
         averageUtilization: 99
         type: Utilization
     type: Resource
-  minReplicas: 1
+  minReplicas: 2
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
@@ -54,7 +54,7 @@ metadata:
   namespace: backend
 spec:
   analysis:
-    interval: 30s
+    interval: 10s
     maxWeight: 100
     metrics:
     - interval: 1m
