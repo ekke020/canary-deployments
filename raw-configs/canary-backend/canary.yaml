@@ -23,19 +23,19 @@ spec:
     # container port number or name (optional)
     targetPort: 7878
     # Istio gateways (optional)
-    gateways:
-    - public-gateway.istio-system.svc.cluster.local
+    # gateways:
+    # - public-gateway.istio-system.svc.cluster.local
     # Istio virtual service host names (optional)
-    hosts:
-    - "*"
+    # hosts:
+    # - "*"
     # Istio traffic policy (optional)
-    trafficPolicy:
-      tls:
-        # use ISTIO_MUTUAL when mTLS is enabled
-        mode: DISABLE
-    match:
-      - uri:
-          prefix: /color
+    # trafficPolicy:
+    #   tls:
+    #     # use ISTIO_MUTUAL when mTLS is enabled
+    #     mode: DISABLE
+    # match:
+    #   - uri:
+    #       prefix: /color
     # Istio retry policy (optional)
     retries:
       attempts: 3
