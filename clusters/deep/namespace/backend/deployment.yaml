@@ -81,7 +81,7 @@ spec:
     gateways:
     - public-gateway.istio-system.svc.cluster.local
     hosts:
-    - canary-backend.${MY_DOMAIN}
+    - '*'
     match:
     - uri:
         prefix: /color
