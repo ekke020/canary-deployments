@@ -4,3 +4,5 @@ namespace: backend
 resources:
 - ns.yaml
 - deployment.yaml
+- hpa.yaml
+- canary.yaml
