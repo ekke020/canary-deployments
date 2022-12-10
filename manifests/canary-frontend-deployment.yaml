@@ -33,7 +33,7 @@ spec:
         app: canary
     spec:
       containers:
-      - image: ekke020/canary-frontend:d0b30da
+      - image: ekke020/canary-frontend:78ca076
         name: canary-frontend
         ports:
         - containerPort: 80
