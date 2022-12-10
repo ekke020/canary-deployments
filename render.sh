@@ -2,7 +2,7 @@
 
 for f in deployments/*/ ; do
   namespace=$(grep -hnr "namespace" ${f}kustomization.yaml)
-  if [[ ! -d "clusters/deep/${namespace##* }" ]]; then
+  if [[ ! -d "clusters/deep/namespace/${namespace##* }" ]]; then
     mkdir clusters/flagger/${namespace##* }
     echo "Created folder for namespace: ${namespace##* }"
   fi
