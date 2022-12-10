@@ -62,6 +62,10 @@ spec:
     interval: 10s
     maxWeight: 80
     metrics:
+    - interval: 1m
+      name: request-success-rate
+      thresholdRange:
+        min: 99
     - interval: 30s
       name: request-duration
       thresholdRange:
@@ -73,6 +77,7 @@ spec:
     kind: HorizontalPodAutoscaler
     name: canary-hpa
   progressDeadlineSeconds: 60
+  provider: istio
   service:
     port: 8080
     retries:
