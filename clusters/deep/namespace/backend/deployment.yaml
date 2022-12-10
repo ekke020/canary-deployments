@@ -74,22 +74,12 @@ spec:
     name: canary-hpa
   progressDeadlineSeconds: 60
   service:
-    gateways:
-    - public-gateway.istio-system.svc.cluster.local
-    hosts:
-    - '*'
-    match:
-    - uri:
-        prefix: /color
     port: 8080
     retries:
       attempts: 3
       perTryTimeout: 1s
       retryOn: gateway-error,connect-failure,refused-stream
     targetPort: 7878
-    trafficPolicy:
-      tls:
-        mode: DISABLE
   targetRef:
     apiVersion: apps/v1
     kind: Deployment
