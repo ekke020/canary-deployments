@@ -1,28 +1,28 @@
-name: Render kubernetes manifests
+name: kustomize
 
 on:
   push: 
-    branches: [ main ]
-    paths: 
-      - raw-configs/**
-      - .github/**
+    paths:
+      - 'deployments/**'
+  workflow_dispatch: {}
+  
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Run render script
+      - name: render manifests
         run: ./render.sh
-      - name: Commit if changes
+      - name: Commit changes
         run: |
           git --version
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add --all
-          git commit -m "Pipeline commit"
+          git commit -m "Updated deployment"
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+          branch: ${{ github.ref }}      

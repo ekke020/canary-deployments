@@ -1,7 +1,12 @@
 #!/bin/bash
 
-for file in raw-configs/*/ ; do
-  if [[ -f "${file}/kustomization.yaml" ]]; then
-    kubectl kustomize $file > manifests/$(basename $file)-deployment.yaml
+for f in deployments/*/ ; do
+  namespace=$(grep -hnr "namespace" ${f}kustomization.yaml)
+  if [[ ! -d "clusters/deep/${namespace##* }" ]]; then
+    mkdir clusters/flagger/${namespace##* }
+    echo "Created folder for namespace: ${namespace##* }"
   fi
+  rm -f clusters/flagger/${namespace##* }/* 
+  kubectl kustomize $f > clusters/flagger/${namespace##* }/deployment.yaml
+  echo $f
 done
