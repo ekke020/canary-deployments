@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: canary-backend
+  labels:
+    deployment: backend
+spec:
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: canary-backend
+  template:
+    metadata:
+      labels:
+        app: canary-backend
+    spec:
+      containers:
+        - name: canary-backend
+          image: ekke020/canary-backend:0960708
+          ports:
+            - containerPort: 7878
+              name: http
+              protocol: TCP
