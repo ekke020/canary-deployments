@@ -1,33 +1,6 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: crds
-  namespace: linkerd
-spec:
-  timeout: 3m
-  interval: 10m
-  releaseName: linkerd
-  targetNamespace: linkerd
-  storageNamespace: linkerd
-  chart:
-    spec:
-      chart: linkerd-crds
-      version: 1.4.0
-      sourceRef:
-        kind: HelmRepository
-        name: linkerd
-        namespace: linkerd
-      interval: 40m
-  values:
-    installNamespace: false
-  # install:
-  #   crds: CreateReplace
-  # upgrade:
-  #   crds: CreateReplace
----
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
-metadata:
   name: control-plane
   namespace: linkerd
 spec:
@@ -45,9 +18,6 @@ spec:
         name: linkerd
         namespace: linkerd
       interval: 40m
-      valuesFiles:
-        - values-ha.yaml
-        - values.yaml
   valuesFrom:
     - kind: Secret
       name: linkerd-certs
@@ -61,7 +31,7 @@ spec:
       name: linkerd-certs
       valuesKey: issuer.key
       targetPath: identity.issuer.tls.keyPEM
-  # install:
-  #   crds: CreateReplace
-  # upgrade:
-  #   crds: CreateReplace     
+  install:
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace     
