@@ -12,7 +12,7 @@ spec:
   chart:
     spec:
       chart: linkerd-control-plane
-      version: 1.11.0-edge
+      version: 1.9.5
       sourceRef:
         kind: HelmRepository
         name: linkerd
@@ -38,5 +38,5 @@ spec:
       targetPath: identity.issuer.tls.keyPEM
   install:
     crds: CreateReplace
-  upgrade:
-    crds: CreateReplace     
+  # upgrade:
+  #   crds: CreateReplace     
