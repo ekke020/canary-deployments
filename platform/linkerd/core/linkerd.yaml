@@ -6,9 +6,9 @@ metadata:
 spec:
   timeout: 3m
   interval: 10m
-  # releaseName: linkerd-crds
-  # targetNamespace: linkerd2
-  # storageNamespace: linkerd2
+  releaseName: linkerd
+  targetNamespace: linkerd
+  storageNamespace: linkerd
   chart:
     spec:
       chart: linkerd-crds
@@ -36,9 +36,9 @@ metadata:
 spec:
   timeout: 3m
   interval: 10m
-  # releaseName: linkerd-control-plane
-  # targetNamespace: linkerd2
-  # storageNamespace: linkerd2
+  releaseName: linkerd
+  targetNamespace: linkerd
+  storageNamespace: linkerd
   chart:
     spec:
       chart: linkerd-control-plane
