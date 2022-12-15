@@ -18,9 +18,9 @@ spec:
         name: linkerd
         namespace: linkerd
       interval: 40m
-      valuesFiles:
-        - values-ha.yaml
-        - values.yaml
+      # valuesFiles:
+        # - values-ha.yaml
+        # - values.yaml
   values:
     identity.issuer.crtExpiry: "2032-12-12T21:36:05Z"
   valuesFrom:
