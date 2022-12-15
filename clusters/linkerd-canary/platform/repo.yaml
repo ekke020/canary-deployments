@@ -8,4 +8,6 @@ spec:
   interval: 1m0s
   ref:
     branch: main
-  url: https://github.com/ekke020/canary-deployments
+  secretRef:
+    name: flux-system
+  url: ssh://git@github.com/ekke020/canary-deployments
