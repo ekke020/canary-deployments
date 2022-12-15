@@ -13,15 +13,35 @@ spec:
     name: flux-system
   validation: client
   healthChecks:
-    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
-      kind: HelmRelease
-      name: linkerd-crds
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: linkerd-proxy-injector
       namespace: linkerd
-    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
-      kind: HelmRelease
-      name: linkerd-control-plane
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: linkerd-identity
       namespace: linkerd
----
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: linkerd-controller
+      namespace: linkerd
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: linkerd-sp-validator
+      namespace: linkerd
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: linkerd-destination
+      namespace: linkerd
+    # - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+    #   kind: HelmRelease
+    #   name: linkerd-crds
+    #   namespace: linkerd
+    # - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+    #   kind: HelmRelease
+    #   name: linkerd-control-plane
+    #   namespace: linkerd
+# ---
 # apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 # kind: Kustomization
 # metadata:
