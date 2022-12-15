@@ -38,15 +38,15 @@ spec:
   storageNamespace: linkerd
   chart:
     spec:
-      chart: linkerd-linkerd-control-plane
+      chart: linkerd-control-plane
       version: 1.9.5
       sourceRef:
         kind: HelmRepository
         name: linkerd
         namespace: linkerd
       interval: 40m
-      valuesFiles:
-        - values-ha.yaml
+      # valuesFiles:
+      #   - values-ha.yaml
   valuesFrom:
     - kind: Secret
       name: linkerd-certs
