@@ -19,7 +19,6 @@ spec:
         namespace: linkerd
       interval: 40m
       valuesFiles:
-        - values-ha.yaml
         - values.yaml
   valuesFrom:
     - kind: Secret
