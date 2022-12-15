@@ -1,70 +1,70 @@
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
-kind: Kustomization
-metadata:
-  name: crds
-  namespace: flux-system
-spec:
-  interval: 1m0s
-  path: ./platform/linkerd/crds
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  validation: client
-  healthChecks:
-    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
-      kind: HelmRelease
-      name: crds
-      namespace: linkerd
+# apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+# kind: Kustomization
+# metadata:
+#   name: crds
+#   namespace: flux-system
+# spec:
+#   interval: 1m0s
+#   path: ./platform/linkerd/crds
+#   prune: true
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   validation: client
+#   healthChecks:
+#     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+#       kind: HelmRelease
+#       name: crds
+#       namespace: linkerd
     # - apiVersion: helm.toolkit.fluxcd.io/v2beta1
     #   kind: HelmRelease
     #   name: linkerd-control-plane
     #   namespace: linkerd
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
-kind: Kustomization
-metadata:
-  name: control-plane
-  namespace: flux-system
-spec:
-  dependsOn:
-  - name: crds
-  interval: 1m0s
-  path: ./platform/linkerd/control-plane
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  validation: client
-  healthChecks:
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: linkerd-proxy-injector
-      namespace: linkerd
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: linkerd-identity
-      namespace: linkerd
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: linkerd-controller
-      namespace: linkerd
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: linkerd-sp-validator
-      namespace: linkerd
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: linkerd-destination
-      namespace: linkerd
-    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
-      kind: HelmRelease
-      name: linkerd-crds
-      namespace: linkerd
-    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
-      kind: HelmRelease
-      name: linkerd-control-plane
-      namespace: linkerd
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+# kind: Kustomization
+# metadata:
+#   name: control-plane
+#   namespace: flux-system
+# spec:
+#   dependsOn:
+#   - name: crds
+#   interval: 1m0s
+#   path: ./platform/linkerd/control-plane
+#   prune: true
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   validation: client
+#   healthChecks:
+#     - apiVersion: apps/v1
+#       kind: Deployment
+#       name: linkerd-proxy-injector
+#       namespace: linkerd
+#     - apiVersion: apps/v1
+#       kind: Deployment
+#       name: linkerd-identity
+#       namespace: linkerd
+#     - apiVersion: apps/v1
+#       kind: Deployment
+#       name: linkerd-controller
+#       namespace: linkerd
+#     - apiVersion: apps/v1
+#       kind: Deployment
+#       name: linkerd-sp-validator
+#       namespace: linkerd
+#     - apiVersion: apps/v1
+#       kind: Deployment
+#       name: linkerd-destination
+#       namespace: linkerd
+#     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+#       kind: HelmRelease
+#       name: linkerd-crds
+#       namespace: linkerd
+#     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+#       kind: HelmRelease
+#       name: linkerd-control-plane
+#       namespace: linkerd
 # ---
 # apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 # kind: Kustomization
