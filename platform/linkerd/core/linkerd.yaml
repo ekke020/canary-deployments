@@ -11,7 +11,7 @@ spec:
   storageNamespace: linkerd
   chart:
     spec:
-      chart: linkerd/linkerd-crds
+      chart: linkerd2/linkerd-crds
       version: '1.4.x'
       sourceRef:
         kind: HelmRepository
@@ -41,7 +41,7 @@ spec:
   storageNamespace: linkerd
   chart:
     spec:
-      chart: linkerd/linkerd-control-plane
+      chart: linkerd2/linkerd-control-plane
       version: '1.9.x'
       sourceRef:
         kind: HelmRepository
