@@ -14,7 +14,7 @@ spec:
   healthChecks:
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
       kind: HelmRelease
-      name: linkerd-crds
+      name: crds
       namespace: linkerd
     # - apiVersion: helm.toolkit.fluxcd.io/v2beta1
     #   kind: HelmRelease
