@@ -45,8 +45,8 @@ spec:
         name: linkerd
         namespace: linkerd
       interval: 40m
-      # valuesFiles:
-      #   - values-ha.yaml
+      valuesFiles:
+        - linkerd2/values-ha.yaml
   valuesFrom:
     - kind: Secret
       name: linkerd-certs
