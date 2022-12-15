@@ -11,8 +11,8 @@ spec:
   storageNamespace: linkerd
   chart:
     spec:
-      chart: linkerd2/linkerd-crds
-      version: '1.4.x'
+      chart: linkerd-crds
+      version: 1.4.0
       sourceRef:
         kind: HelmRepository
         name: linkerd
@@ -41,8 +41,8 @@ spec:
   storageNamespace: linkerd
   chart:
     spec:
-      chart: linkerd2/linkerd-control-plane
-      version: '1.9.x'
+      chart: linkerd-control-plane
+      version: 1.9.5
       sourceRef:
         kind: HelmRepository
         name: linkerd
