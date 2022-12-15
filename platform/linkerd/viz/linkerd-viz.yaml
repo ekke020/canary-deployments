@@ -11,7 +11,7 @@ spec:
   storageNamespace: linkerd-viz
   chart:
     spec:
-      chart: linkerd-viz
+      chart: linkerd/linkerd-viz
       sourceRef:
         kind: HelmRepository
         name: linkerd
