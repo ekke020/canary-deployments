@@ -61,7 +61,7 @@ spec:
       name: linkerd-certs
       valuesKey: issuer.key
       targetPath: identity.issuer.tls.keyPEM
-  install:
-    crds: CreateReplace
-  upgrade:
-    crds: CreateReplace     
+  # install:
+  #   crds: CreateReplace
+  # upgrade:
+  #   crds: CreateReplace     
