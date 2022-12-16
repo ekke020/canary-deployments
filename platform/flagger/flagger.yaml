@@ -3,7 +3,13 @@ kind: Deployment
 metadata:
   name: flagger
 spec:
+  selector:
+    matchLabels:
+      fleet: linkerd
   template:
+    metadata:
+      labels:
+        fleet: linkerd
     spec:
       containers:
         - name: flagger

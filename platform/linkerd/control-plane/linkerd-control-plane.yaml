@@ -757,6 +757,7 @@ metadata:
     app.kubernetes.io/version: stable-2.12.2
     linkerd.io/control-plane-component: identity
     linkerd.io/control-plane-ns: linkerd
+    fleet: linkerd
   name: linkerd-identity
   namespace: linkerd
 spec:
@@ -766,6 +767,7 @@ spec:
       linkerd.io/control-plane-component: identity
       linkerd.io/control-plane-ns: linkerd
       linkerd.io/proxy-deployment: linkerd-identity
+      fleet: linkerd
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -783,6 +785,7 @@ spec:
         linkerd.io/control-plane-ns: linkerd
         linkerd.io/workload-ns: linkerd
         linkerd.io/proxy-deployment: linkerd-identity
+        fleet: linkerd
     spec:
       nodeSelector:
         kubernetes.io/os: linux
@@ -1110,6 +1113,7 @@ metadata:
     app.kubernetes.io/version: stable-2.12.2
     linkerd.io/control-plane-component: destination
     linkerd.io/control-plane-ns: linkerd
+    fleet: linkerd
   name: linkerd-destination
   namespace: linkerd
 spec:
@@ -1119,6 +1123,7 @@ spec:
       linkerd.io/control-plane-component: destination
       linkerd.io/control-plane-ns: linkerd
       linkerd.io/proxy-deployment: linkerd-destination
+      fleet: linkerd
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -1136,6 +1141,7 @@ spec:
         linkerd.io/control-plane-ns: linkerd
         linkerd.io/workload-ns: linkerd
         linkerd.io/proxy-deployment: linkerd-destination
+        fleet: linkerd
     spec:
       nodeSelector:
         kubernetes.io/os: linux
@@ -1488,6 +1494,7 @@ metadata:
     app.kubernetes.io/version: stable-2.12.2
     linkerd.io/control-plane-component: proxy-injector
     linkerd.io/control-plane-ns: linkerd
+    fleet: linkerd
   name: linkerd-proxy-injector
   namespace: linkerd
 spec:
@@ -1495,6 +1502,7 @@ spec:
   selector:
     matchLabels:
       linkerd.io/control-plane-component: proxy-injector
+      fleet: linkerd
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -1513,6 +1521,7 @@ spec:
         linkerd.io/control-plane-ns: linkerd
         linkerd.io/workload-ns: linkerd
         linkerd.io/proxy-deployment: linkerd-proxy-injector
+        fleet: linkerd
     spec:
       nodeSelector:
         kubernetes.io/os: linux

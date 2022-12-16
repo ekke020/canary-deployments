@@ -498,6 +498,7 @@ metadata:
     app.kubernetes.io/part-of: Linkerd
     app.kubernetes.io/version: stable-2.12.2
     component: metrics-api
+    fleet: linkerd
   name: metrics-api
   namespace: linkerd-viz
 spec:
@@ -506,6 +507,7 @@ spec:
     matchLabels:
       linkerd.io/extension: viz
       component: metrics-api
+      fleet: linkerd
   template:
     metadata:
       annotations:
@@ -516,6 +518,7 @@ spec:
       labels:
         linkerd.io/extension: viz
         component: metrics-api
+        fleet: linkerd
     spec:
       nodeSelector:
         kubernetes.io/os: linux
@@ -777,6 +780,7 @@ metadata:
     app.kubernetes.io/version: stable-2.12.2
     component: prometheus
     namespace: linkerd-viz
+    fleet: linkerd
   name: prometheus
   namespace: linkerd-viz
 spec:
@@ -786,6 +790,7 @@ spec:
       linkerd.io/extension: viz
       component: prometheus
       namespace: linkerd-viz
+      fleet: linkerd
   template:
     metadata:
       annotations:
@@ -795,6 +800,7 @@ spec:
         linkerd.io/extension: viz
         component: prometheus
         namespace: linkerd-viz
+        fleet: linkerd
     spec:
       nodeSelector:
         kubernetes.io/os: linux
@@ -887,6 +893,7 @@ metadata:
     app.kubernetes.io/version: stable-2.12.2
     component: tap
     namespace: linkerd-viz
+    fleet: linkerd
   name: tap
   namespace: linkerd-viz
 spec:
@@ -896,6 +903,7 @@ spec:
       linkerd.io/extension: viz
       component: tap
       namespace: linkerd-viz
+      fleet: linkerd
   template:
     metadata:
       annotations:
@@ -907,6 +915,7 @@ spec:
         linkerd.io/extension: viz
         component: tap
         namespace: linkerd-viz
+        fleet: linkerd
     spec:
       nodeSelector:
         kubernetes.io/os: linux
@@ -1101,6 +1110,7 @@ metadata:
     app.kubernetes.io/name: tap-injector
     app.kubernetes.io/part-of: Linkerd
     component: tap-injector
+    fleet: linkerd
   name: tap-injector
   namespace: linkerd-viz
 spec:
@@ -1108,6 +1118,7 @@ spec:
   selector:
     matchLabels:
       component: tap-injector
+      fleet: linkerd
   template:
     metadata:
       annotations:
@@ -1118,6 +1129,7 @@ spec:
       labels:
         linkerd.io/extension: viz
         component: tap-injector
+        fleet: linkerd
     spec:
       nodeSelector:
         kubernetes.io/os: linux
@@ -1256,6 +1268,7 @@ metadata:
     app.kubernetes.io/version: stable-2.12.2
     component: web
     namespace: linkerd-viz
+    fleet: linkerd
   name: web
   namespace: linkerd-viz
 spec:
@@ -1265,6 +1278,7 @@ spec:
       linkerd.io/extension: viz
       component: web
       namespace: linkerd-viz
+      fleet: linkerd
   template:
     metadata:
       annotations:
@@ -1275,6 +1289,7 @@ spec:
         linkerd.io/extension: viz
         component: web
         namespace: linkerd-viz
+        fleet: linkerd
     spec:
       nodeSelector:
         kubernetes.io/os: linux
