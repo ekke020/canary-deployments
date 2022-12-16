@@ -93,8 +93,8 @@ metadata:
   name: flagger
   namespace: flux-system
 spec:
-  dependsOn:
-  - name: linkerd-viz
+#   dependsOn:
+#   - name: linkerd-viz
   interval: 1m0s
   path: ./platform/flagger
   prune: true
