@@ -15,6 +15,7 @@ spec:
   selector:
     matchLabels:
       app: podinfo
+      fleet: linkerd
   template:
     metadata:
       annotations:
@@ -22,6 +23,7 @@ spec:
         prometheus.io/port: "9797"
       labels:
         app: podinfo
+        fleet: linkerd
     spec:
       containers:
       - name: podinfod

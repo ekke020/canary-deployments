@@ -8,10 +8,12 @@ spec:
   selector:
     matchLabels:
       app: flagger-loadtester
+      fleet: linkerd
   template:
     metadata:
       labels:
         app: flagger-loadtester
+        fleet: linkerd
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/port: "8080"
