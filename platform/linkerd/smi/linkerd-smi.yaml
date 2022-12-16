@@ -18,6 +18,8 @@ spec:
         name: l5d-smi
         namespace: linkerd
       interval: 40m
+  values:
+    installNamespace: false
   install:
     crds: CreateReplace
   upgrade:
