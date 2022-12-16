@@ -12,10 +12,10 @@ spec:
   chart:
     spec:
       chart: linkerd-smi
-      version: 1.0.0
+      version: 0.2.0
       sourceRef:
         kind: HelmRepository
-        name: linkerd
+        name: l5d-smi
         namespace: linkerd
       interval: 40m
   install:

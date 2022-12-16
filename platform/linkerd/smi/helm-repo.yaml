@@ -1,0 +1,9 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: l5d-smi
+  namespace: linkerd
+spec:
+  interval: 2m
+  url: https://linkerd.github.io/linkerd-smi
