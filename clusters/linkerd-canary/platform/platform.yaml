@@ -1,21 +1,21 @@
-# apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
-# kind: Kustomization
-# metadata:
-#   name: crds
-#   namespace: flux-system
-# spec:
-#   interval: 1m0s
-#   path: ./platform/linkerd/crds
-#   prune: true
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   validation: client
-#   healthChecks:
-#     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
-#       kind: HelmRelease
-#       name: crds
-#       namespace: linkerd
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+kind: Kustomization
+metadata:
+  name: crds
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  path: ./platform/linkerd/crds
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  validation: client
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: crds
+      namespace: linkerd
     # - apiVersion: helm.toolkit.fluxcd.io/v2beta1
     #   kind: HelmRelease
     #   name: linkerd-control-plane
@@ -87,23 +87,25 @@
 #       name: linkerd-viz
 #       namespace: linkerd-viz
 # ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
-kind: Kustomization
-metadata:
-  name: flagger
-  namespace: flux-system
-spec:
+
+# This works!
+# apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+# kind: Kustomization
+# metadata:
+#   name: flagger
+#   namespace: flux-system
+# spec:
 #   dependsOn:
 #   - name: linkerd-viz
-  interval: 1m0s
-  path: ./platform/flagger
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  validation: client
-  healthChecks:
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: flagger
-      namespace: linkerd
+#   interval: 1m0s
+#   path: ./platform/flagger
+#   prune: true
+#   sourceRef:
+#     kind: GitRepository
+#     name: flux-system
+#   validation: client
+#   healthChecks:
+#     - apiVersion: apps/v1
+#       kind: Deployment
+#       name: flagger
+#       namespace: linkerd
