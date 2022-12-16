@@ -1,14 +1,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: linkerd-viz
+  name: viz
   namespace: linkerd-viz
 spec:
   timeout: 3m
   interval: 40m
   releaseName: linkerd-viz
-  targetNamespace: linkerd-viz
-  storageNamespace: linkerd-viz
+  targetNamespace: linkerd
+  storageNamespace: linkerd
   chart:
     spec:
       chart: linkerd-viz
