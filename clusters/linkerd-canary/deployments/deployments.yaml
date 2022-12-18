@@ -4,8 +4,8 @@ metadata:
   name: backend
   namespace: flux-system
 spec:
-  dependsOn:
-  - name: flagger
+  # dependsOn:
+  # - name: flagger
   interval: 1m0s
   path: ./raw-configs/canary-backend
   prune: true
