@@ -1,12 +1,12 @@
 #!/bin/bash
 
-kustomize build demo-app/podinfo/ | kubectl delete -f -
+kustomize build raw-configs/canary-frontend | kubectl delete -f -
 wait
-echo Uninstalled podinfo
+echo Uninstalled the frontend
 
-kustomize build demo-app/load-tester/ | kubectl delete -f -
+kustomize build raw-configs/canary-backend | kubectl delete -f -
 wait
-echo Uninstalled load-tester
+echo Uninstalled the backend
 
 kubectl delete ServiceAccount flagger -n linkerd
 kubectl delete ClusterRoleBinding flagger -n linkerd
