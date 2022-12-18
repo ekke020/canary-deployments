@@ -1,0 +1,8 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: linkerd-viz
+  labels:
+    fleet: linkerd
+    linkerd.io/extension: viz
+  annotations:

@@ -1,0 +1,43 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: control-plane
+  namespace: linkerd
+spec:
+  interval: 5m
+  # releaseName: linkerd
+  # targetNamespace: linkerd
+  # storageNamespace: linkerd
+  chart:
+    spec:
+      chart: linkerd-control-plane
+      version: 1.9.5
+      sourceRef:
+        kind: HelmRepository
+        name: linkerd
+        namespace: linkerd
+      interval: 1m
+      # valuesFiles:
+      #   - values.yaml
+        # - values-ha.yaml
+  install:
+    crds: Create 
+  upgrade:
+    crds: CreateReplace
+  values:
+    identity:
+      issuer:
+        crtExpiry: "2023-12-18T00:29:27Z"
+  valuesFrom:
+    - kind: Secret
+      name: linkerd-certs
+      valuesKey: ca.crt
+      targetPath: identityTrustAnchorsPEM
+    - kind: Secret
+      name: linkerd-certs
+      valuesKey: issuer.crt
+      targetPath: identity.issuer.tls.crtPEM
+    - kind: Secret
+      name: linkerd-certs
+      valuesKey: issuer.key
+      targetPath: identity.issuer.tls.keyPEM
