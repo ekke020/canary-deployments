@@ -1,24 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: canary-backend
+  name: backend
   labels:
     deployment: backend
 spec:
-  strategy:
-    rollingUpdate:
-      maxUnavailable: 1
   selector:
     matchLabels:
-      app: canary-backend
+      app: backend
   template:
     metadata:
+      annotations:
+        linkerd.io/inject: enabled
       labels:
-        app: canary-backend
+        app: backend
     spec:
       containers:
         - name: canary-backend
-          image: ekke020/canary-backend:0960708 #7dd8821 0960708
+          image: ekke020/canary-backend:5675c8b
           ports:
             - containerPort: 7878
               name: http
