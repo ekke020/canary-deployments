@@ -125,44 +125,44 @@ spec:
       name: flagger
       namespace: linkerd
 ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
-# kind: Kustomization
-# metadata:
-#   name: load-tester
-#   namespace: flux-system
-# spec:
-#   dependsOn:
-#   - name: flagger
-#   interval: 1m0s
-#   path: ./demo-app/load-tester
-#   prune: true
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   validation: client
-#   healthChecks:
-#     - apiVersion: apps/v1
-#       kind: Deployment
-#       name: flagger-loadtester
-#       namespace: test
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
-# kind: Kustomization
-# metadata:
-#   name: podinfo
-#   namespace: flux-system
-# spec:
-#   dependsOn:
-#   - name: load-tester
-#   interval: 1m0s
-#   path: ./demo-app/podinfo
-#   prune: true
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   validation: client
-#   healthChecks:
-#     - apiVersion: apps/v1
-#       kind: Deployment
-#       name: podinfo
-#       namespace: test
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+kind: Kustomization
+metadata:
+  name: backend
+  namespace: flux-system
+spec:
+  dependsOn:
+  - name: flagger
+  interval: 1m0s
+  path: ./raw-configs/canary-backend
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  validation: client
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: backend-primary
+      namespace: backend
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+kind: Kustomization
+metadata:
+  name: frontend
+  namespace: flux-system
+spec:
+  dependsOn:
+  - name: backend
+  interval: 1m0s
+  path: ./raw-configs/canary-frontend
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  validation: client
+  healthChecks:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: frontend
+      namespace: frontend
