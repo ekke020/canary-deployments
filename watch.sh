@@ -1,3 +1,3 @@
 #!/bin/bash
 
-watch 'kubectl -n backend describe canary/canary-backend | grep Events -A30'
+watch 'kubectl get pods --all-namespaces --field-selector metadata.namespace!=kube-system'
