@@ -4,13 +4,13 @@ kind: Service
 metadata:
   labels:
     service: frontend-srv
-    app: canary
+    app: frontend
   name: frontend-srv
 
 spec:
   type: NodePort
   selector:
-    app: canary
+    app: frontend
   ports:
   - port: 80
     protocol: TCP

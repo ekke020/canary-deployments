@@ -1,21 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: canary
+  name: frontend
   labels:
     deployment: frontend
 spec:
   selector:
     matchLabels:
-      app: canary
-    replicas: 1
+      app: frontend
+  replicas: 1
   template:
     metadata:
+      annotations:
+        linkerd.io/inject: enabled
       labels:
-        app: canary
+        app: frontend
     spec:
       containers:
         - name: canary-frontend
-          image: ekke020/canary-frontend:latest
+          image: ekke020/canary-frontend:4989730
           ports:
             - containerPort: 80
