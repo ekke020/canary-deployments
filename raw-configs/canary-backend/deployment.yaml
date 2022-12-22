@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: canary-backend
-          image: ekke020/canary-backend:d4b5a68
+          image: ekke020/canary-backend:92fe703
           ports:
             - containerPort: 7878
               name: http
